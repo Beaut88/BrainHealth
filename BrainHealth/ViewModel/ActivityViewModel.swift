@@ -135,4 +135,12 @@ class ActivityViewModel: ObservableObject {
         }
         return unsuccessfulActivities.count
     }
+    
+    func deleteActivity(_ activity: Activity) {
+            if let index = activities.firstIndex(where: { $0.id == activity.id }) {
+                activities.remove(at: index)
+                saveActivities()
+                objectWillChange.send()
+            }
+        }
 }
