@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Info.plist
+   BrainHealth
+
+   Created by Warit Karnbunjob on 19/2/2568 BE.
+   Copyright (c) 2568 BE ___ORGANIZATIONNAME___. All rights reserved.
+-->
 <plist version="1.0">
-<dict>
-	<key>InitialUserName</key>
-	<string></string>
-</dict>
+<dict/>
 </plist>
