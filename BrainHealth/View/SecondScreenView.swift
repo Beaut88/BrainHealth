@@ -8,7 +8,6 @@ import SwiftUI
 
 struct SecondScreenView: View {
     @StateObject private var viewModel = ActivityViewModel()
-    @State private var navigateToActivityDetails = false
     
     var body: some View {
         ZStack {
@@ -30,42 +29,37 @@ struct SecondScreenView: View {
                 Text("Pillars of a healthy mind")
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundColor(Color(red: 0.4, green: 0.8, blue: 0.4)) // Light green
+                    .foregroundColor(Color(red: 0.4, green: 0.8, blue: 0.4))
                     .padding(.top, 10)
                 
                 HStack(spacing: 20) {
-                    ForEach([ActivityCategory.physical, .emotional, .cognition]) { category in
-                        Button(action: {
-                            navigateToActivityDetails = true
-                        }) {
-                            VStack {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color(red: 0.8, green: 0.9, blue: 1.0)) // Light blue
-                                        .frame(width: 100, height: 100)
-                                    
-                                    VStack {
-                                        Text(category.rawValue)
-                                            .font(.system(size: 14))
-                                            .fontWeight(.medium)
-                                        Text("\(Int(viewModel.calculateWeeklyAverage(for: category)))%")
-                                            .font(.system(size: 20))
-                                            .fontWeight(.bold)
+                                    ForEach([ActivityCategory.physical, .emotional, .cognition]) { category in
+                                        NavigationLink {
+                                            ActivityDetailsView(viewModel: viewModel,category: category) // Pass viewModel here
+                                        } label: {
+                                            VStack {
+                                                ZStack {
+                                                    Circle()
+                                                        .fill(Color(red: 0.8, green: 0.9, blue: 1.0))
+                                                        .frame(width: 100, height: 100)
+                                                    
+                                                    VStack {
+                                                        Text(category.rawValue)
+                                                            .font(.system(size: 14))
+                                                            .fontWeight(.medium)
+                                                        Text("\(Int(viewModel.calculateWeeklyAverage(for: category)))%")
+                                                            .font(.system(size: 20))
+                                                            .fontWeight(.bold)
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
-                            }
-                        }
-                    }
-                }
-                .padding()
-                
-                NavigationLink(destination: ActivityDetailsView(), isActive: $navigateToActivityDetails) {
-                    EmptyView()
-                }
+                                .padding()
                 
                 Spacer()
             }
         }
     }
 }
-

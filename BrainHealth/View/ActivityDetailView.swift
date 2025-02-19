@@ -7,7 +7,12 @@
 import SwiftUI
 
 struct ActivityDetailsView: View {
-    @StateObject private var viewModel = ActivityViewModel()
+    @ObservedObject var viewModel: ActivityViewModel
+    let category: ActivityCategory
+    
+    var filteredActivities: [Activity] {
+        viewModel.activities.filter { $0.category == category }
+    }
     
     var body: some View {
         ZStack {
@@ -21,26 +26,33 @@ struct ActivityDetailsView: View {
             )
             .ignoresSafeArea()
             
-            VStack {
-                Text("Activity Log")
+            VStack(spacing: 20) {
+                Text("\(category.rawValue) Activities")
                     .font(.largeTitle)
                     .padding(.top, 50)
                 
-                List {
-                    ForEach(ActivityCategory.allCases, id: \.self) { category in
-                        Section(header: Text(category.rawValue)) {
-                            ForEach(viewModel.activities.filter { $0.category == category }) { activity in
-                                HStack {
-                                    Text(activity.name)
-                                    Spacer()
-                                    Text(activity.completed ? "✓" : "○")
-                                }
-                            }
-                        }
-                    }
+                // Status count cards
+                HStack(spacing: 16) {
+                    StatusCard(
+                        title: "Completed",
+                        count: filteredActivities.filter { $0.completed }.count,
+                        color: .green
+                    )
+                    StatusCard(
+                        title: "Pending",
+                        count: filteredActivities.filter { !$0.completed }.count,
+                        color: .orange
+                    )
                 }
+                .padding(.horizontal)
+                
+                List {
+                                   ForEach(filteredActivities) { activity in
+                                       ActivityRow(activity: activity, viewModel: viewModel)
+                                   }
+                               }
+                .listStyle(PlainListStyle())
             }
         }
     }
 }
-

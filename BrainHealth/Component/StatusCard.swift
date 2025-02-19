@@ -1,3 +1,11 @@
+//
+//  StatusCard.swift
+//  BrainHealth
+//
+//  Created by Warit Karnbunjob on 20/2/2568 BE.
+//
+
+import SwiftUI
 struct StatusCard: View {
     let title: String
     let count: Int

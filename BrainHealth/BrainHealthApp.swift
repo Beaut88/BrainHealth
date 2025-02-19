@@ -11,7 +11,9 @@ import SwiftUI
 struct BrainHealthApp: App {
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            NavigationStack {
+                WelcomeView()
+            }
         }
     }
 }
