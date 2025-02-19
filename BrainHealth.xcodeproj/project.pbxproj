@@ -6,18 +6,26 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		E50D62512D622A4200133AC0 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E50D62502D622A4200133AC0 /* info.plist */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		E50D623B2D62271800133AC0 /* BrainHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E50D62502D622A4200133AC0 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CCC848D42D66268C000E5FF3 /* Exceptions for "BrainHealth" folder in "BrainHealth" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E50D623A2D62271800133AC0 /* BrainHealth */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E50D623D2D62271800133AC0 /* BrainHealth */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CCC848D42D66268C000E5FF3 /* Exceptions for "BrainHealth" folder in "BrainHealth" target */,
+			);
 			path = BrainHealth;
 			sourceTree = "<group>";
 		};
@@ -37,7 +45,6 @@
 		E50D62322D62271800133AC0 = {
 			isa = PBXGroup;
 			children = (
-				E50D62502D622A4200133AC0 /* info.plist */,
 				E50D623D2D62271800133AC0 /* BrainHealth */,
 				E50D623C2D62271800133AC0 /* Products */,
 			);
@@ -115,7 +122,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E50D62512D622A4200133AC0 /* info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +190,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BrainHealth/Info.plist;
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -241,6 +250,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BrainHealth/Info.plist;
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -260,7 +272,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrainHealth/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BrainHealth/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,7 +301,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrainHealth/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BrainHealth/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
