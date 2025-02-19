@@ -8,6 +8,7 @@ import SwiftUI
 
 struct SecondScreenView: View {
     @StateObject private var viewModel = ActivityViewModel()
+    @State private var showingSummary = false
     
     var body: some View {
         ZStack {
@@ -22,6 +23,7 @@ struct SecondScreenView: View {
             .ignoresSafeArea()
             
             VStack(spacing: 30) {
+                Spacer()
                 Text("Mental Fitness Tracker")
                     .font(.largeTitle)
                     .padding(.top, 50)
@@ -59,7 +61,26 @@ struct SecondScreenView: View {
                                 .padding()
                 
                 Spacer()
+                
+                Button(action: {
+                                   showingSummary = true
+                               }) {
+                                   Text("Finish")
+                                       .font(.headline)
+                                       .foregroundColor(.white)
+                                       .frame(width: 200, height: 50)
+                                       .background(
+                                           RoundedRectangle(cornerRadius: 25)
+                                               .fill(Color.green)
+                                               .shadow(radius: 5)
+                                       )
+                               }
+                               .padding(.bottom, 30)
+                
             }
         }
+        .navigationDestination(isPresented: $showingSummary) {
+                    SummaryView(viewModel: viewModel)
+                }
     }
 }

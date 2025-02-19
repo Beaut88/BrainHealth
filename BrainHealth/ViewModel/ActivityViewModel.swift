@@ -143,4 +143,17 @@ class ActivityViewModel: ObservableObject {
                 objectWillChange.send()
             }
         }
+    
+    func resetWithPredefinedActivities() {
+        activities = predefinedActivities.map { activity in
+            Activity(
+                name: activity.name,
+                category: activity.category,
+                date: Date(),
+                completed: false
+            )
+        }
+        saveActivities()
+        objectWillChange.send()
+    }
 }
