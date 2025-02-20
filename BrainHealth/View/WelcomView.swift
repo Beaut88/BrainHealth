@@ -20,22 +20,27 @@ struct WelcomeView: View {
                 // Background gradient
                 LinearGradient(
                     gradient: Gradient(colors: [
-                        Color(red: 0.9, green: 0.95, blue: 1.0),
-                        Color(red: 0.85, green: 0.95, blue: 0.9)
+                        Color(red: 0.98, green: 0.92, blue: 0.87),    // Soft cream
+                        Color(red: 0.97, green: 0.85, blue: 0.82),    // Delicate pink
+                        Color(red: 0.95, green: 0.80, blue: 0.75),    // Light peach
+                        Color(red: 0.92, green: 0.75, blue: 0.80),    // Muted rose
+                        Color(red: 0.10, green: 0.15, blue: 0.35)     // Dark navy
                     ]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
+                    startPoint: .top,
+                    endPoint: .bottom
                 )
                 .ignoresSafeArea()
                 
-                VStack(spacing: 20) {
+                VStack(spacing: 25) {
                     Text("Brain Health")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.top, 50)
-                    
-                    Text(viewModel.userName.isEmpty ? "Hello there!" : "Hello \(viewModel.userName)")
                         .font(.title2)
+                        .fontWeight(.bold)
+                        .padding(.top, 20)
+                    
+                    
+                    
+                    Text(viewModel.userName.isEmpty ? "Hello there!" : "Hello, \(viewModel.userName)")
+                        .font(.custom("Noteworthy-Bold", size: 40))
                         .padding(.top, 30)
                     
                     if viewModel.userName.isEmpty {
@@ -64,26 +69,27 @@ struct WelcomeView: View {
                     }
                     
                     if !viewModel.userName.isEmpty {
-                        Text("How are you?")
-                            .font(.title3)
-                            .padding(.top, 10)
-                            .onAppear {
-                                // Navigate to first screen after showing "How are you?"
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                    navigateToFirstScreen = true
-                                }
-                            }
+                       Text("Hope you had a great day, let's conserve ur precious brain")
+                           .font(.custom("Noteworthy-Bold", size: 35))  // Changed to Noteworthy-Bold
+                           .multilineTextAlignment(.center)
+                           .frame(maxWidth: .infinity)
+                           .padding(.vertical, 100)
+                           .onAppear {
+                               DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                   navigateToFirstScreen = true
+                               }
+                           }
                     }
                     
                     Spacer()
                 }
                 
-                NavigationLink(
-                    destination: FirstScreenView(userName: viewModel.userName),
-                    isActive: $navigateToFirstScreen
-                ) {
-                    EmptyView()
-                }
+//                NavigationLink(
+//                    destination: FirstScreenView(userName: viewModel.userName),
+//                    isActive: $navigateToFirstScreen
+//                ) {
+//                    EmptyView()
+//                }
             }
         }
     }
