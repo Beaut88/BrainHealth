@@ -15,6 +15,7 @@ class ActivityViewModel: ObservableObject {
     private let activitiesKey = "activities"
     private let successfulActivitiesKey = "successfulActivities"
     private let unsuccessfulActivitiesKey = "unsuccessfulActivities"
+    private let lastResetKey = "lastResetDate"
     
     let predefinedActivities: [Activity] = [
         // Physical Activities
@@ -37,8 +38,8 @@ class ActivityViewModel: ObservableObject {
     ]
     
     init() {
-        loadActivities()
-    }
+            loadActivities()
+        }
     
     func loadActivities() {
         loadFromUserDefaults()
@@ -156,4 +157,24 @@ class ActivityViewModel: ObservableObject {
         saveActivities()
         objectWillChange.send()
     }
+    
+
+        
+    func checkAndHandleWeeklyReset() -> Bool {
+        let calendar = Calendar.current
+        let today = Date()
+        
+        // Get last reset date from UserDefaults
+        let lastReset = UserDefaults.standard.object(forKey: lastResetKey) as? Date ?? today
+        
+        // TEMPORARY TEST: Remove Sunday check and just check if it's a new day
+        if !calendar.isDate(lastReset, inSameDayAs: today) {
+            // Store the reset date
+            UserDefaults.standard.set(today, forKey: lastResetKey)
+            return true
+        }
+        
+        return false
+    }
+    
 }

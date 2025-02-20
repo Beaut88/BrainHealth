@@ -13,6 +13,7 @@ struct WelcomeView: View {
     @State private var newUserName: String = ""
     @State private var showSubmitButton: Bool = true
     @State private var navigateToFirstScreen: Bool = false
+    @Binding var showSecondScreen: Bool
     
     var body: some View {
         NavigationStack {
@@ -79,7 +80,7 @@ struct WelcomeView: View {
                 }
                 
                 NavigationLink(
-                    destination: FirstScreenView(userName: viewModel.userName),
+                    destination: FirstScreenView(userName: viewModel.userName, showSecondScreen: $showSecondScreen),
                     isActive: $navigateToFirstScreen
                 ) {
                     EmptyView()

@@ -9,6 +9,7 @@ import SwiftUI
 struct SecondScreenView: View {
     @StateObject private var viewModel = ActivityViewModel()
     @State private var showingSummary = false
+    @Binding var showSecondScreen: Bool
     
     var body: some View {
         ZStack {
@@ -61,7 +62,6 @@ struct SecondScreenView: View {
                                 .padding()
                 
                 Spacer()
-                
                 Button(action: {
                                    showingSummary = true
                                }) {
@@ -79,8 +79,17 @@ struct SecondScreenView: View {
                 
             }
         }
-        .navigationDestination(isPresented: $showingSummary) {
-                    SummaryView(viewModel: viewModel)
+        .onAppear {
+                    if viewModel.checkAndHandleWeeklyReset() {
+                        showingSummary = true
+                    }
+                }
+                .navigationDestination(isPresented: $showingSummary) {
+                    SummaryView(
+                        viewModel: viewModel,
+                        showSecondScreen: $showSecondScreen,
+                        isAutoReset: true
+                    )
                 }
     }
 }

@@ -10,6 +10,8 @@ struct SummaryView: View {
     @ObservedObject var viewModel: ActivityViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var showingFirstScreen = false
+    @Binding var showSecondScreen: Bool
+    let isAutoReset: Bool
     
     var overallCompletion: Double {
         let completedCount = viewModel.activities.filter { $0.completed }.count
@@ -101,6 +103,13 @@ struct SummaryView: View {
                         )
                 }
                 .padding(.top, 30)
+                
+                if isAutoReset {
+                    Text("Weekly progress reset occurs every Sunday")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .padding(.top, 5)
+                }
             }
             .padding()
         }
@@ -109,8 +118,7 @@ struct SummaryView: View {
     
     private func resetAndReturn() {
         viewModel.resetWithPredefinedActivities()
-        // Navigate back to the first screen
-        // Note: You'll need to implement this navigation based on your app's structure
+        showSecondScreen = false
         dismiss()
     }
 }

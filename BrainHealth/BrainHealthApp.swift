@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct BrainHealthApp: App {
+    @State private var showSecondScreen = false
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                WelcomeView()
+                WelcomeView(showSecondScreen: $showSecondScreen)
             }
         }
     }

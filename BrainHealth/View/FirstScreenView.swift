@@ -10,6 +10,7 @@ import SwiftUI
 struct FirstScreenView: View {
     let userName: String
     @StateObject private var viewModel = UserViewModel()
+    @Binding var showSecondScreen: Bool
     @State private var navigateToSecondScreen = false
     
     var body: some View {
@@ -55,7 +56,7 @@ struct FirstScreenView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: SecondScreenView()) {
+                    NavigationLink(destination: SecondScreenView(showSecondScreen: $showSecondScreen)) {
                         Text("Mental Fitness Tracker")
                             .font(.title3)
                             .foregroundColor(.black)
