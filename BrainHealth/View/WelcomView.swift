@@ -85,12 +85,12 @@ struct WelcomeView: View {
                     Spacer()
                 }
                 
-//                NavigationLink(
-//                    destination: FirstScreenView(userName: viewModel.userName),
-//                    isActive: $navigateToFirstScreen
-//                ) {
-//                    EmptyView()
-//                }
+                NavigationLink(
+                    destination: FirstScreenView(userName: viewModel.userName, showSecondScreen: $showSecondScreen),
+                    isActive: $navigateToFirstScreen
+                ) {
+                    EmptyView()
+                }
             }
         }
     }
