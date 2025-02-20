@@ -23,14 +23,16 @@ struct ActivityDetailsView: View {
     var body: some View {
         ZStack {
             LinearGradient(
-                gradient: Gradient(colors: [
-                    Color(red: 0.9, green: 0.95, blue: 1.0),
-                    Color(red: 0.85, green: 0.95, blue: 0.9)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+                            gradient: Gradient(colors: [
+                                Color(red: 0.98, green: 0.95, blue: 0.90), // Light warm beige
+                                Color(red: 0.95, green: 0.92, blue: 0.85), // Medium warm beige
+                                Color(red: 0.92, green: 0.89, blue: 0.82)  // Deeper warm beige
+                            ]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .ignoresSafeArea()
+                        
             
             VStack(spacing: 20) {
                 Text("\(category.rawValue) Activities")

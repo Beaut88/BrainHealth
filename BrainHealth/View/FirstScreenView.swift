@@ -19,18 +19,23 @@ struct FirstScreenView: View {
                 // Background gradient
                 LinearGradient(
                     gradient: Gradient(colors: [
-                        Color(red: 0.9, green: 0.95, blue: 1.0),
-                        Color(red: 0.85, green: 0.95, blue: 0.9)
+                        Color(red: 0.98, green: 0.92, blue: 0.87),    // Soft cream
+                        Color(red: 0.97, green: 0.85, blue: 0.82),    // Delicate pink
+                        Color(red: 0.95, green: 0.80, blue: 0.75),    // Light peach
+                        Color(red: 0.92, green: 0.75, blue: 0.80),    // Muted rose
+                        Color(red: 0.10, green: 0.15, blue: 0.35)     // Dark navy
                     ]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
+                    startPoint: .top,
+                    endPoint: .bottom
                 )
                 .ignoresSafeArea()
                 
+                            
                 VStack(spacing: 25) {
                     Text("Brain Health")
                         .font(.title2)
-                        .padding(.top, 50)
+                        .fontWeight(.bold)
+                        .padding(.top, 20)
                     
                     Spacer()
                     
@@ -39,22 +44,32 @@ struct FirstScreenView: View {
                     Text(averageHealth >= 70 ?
                         "Nice Work! Your brain health is better than others" :
                         "Keep up the effort taking care of your brain, it can be better!")
-                        .font(.system(size: 28, weight: .bold))
+                        .font(.custom("Noteworthy-Bold", size: 30))
+                        .foregroundColor(Color(red: 0.8, green: 0.2, blue: 0.2))
                         .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)  // Allows text to wrap properly
                         .padding()
-                        .background(Color.white.opacity(0.8))
+                        .frame(maxWidth: .infinity)  // Ensures text takes available width
                         .cornerRadius(10)
-                        .padding(.horizontal)
+                        .padding(.horizontal, 24)
                     
-                    Text("Let's remember to take care of our brain health... A strong mind is key to a healthy life")
-                        .font(.custom("Comic Sans MS", size: 20))
-                        .multilineTextAlignment(.center)
-                        .padding()
-                        .background(Color.white.opacity(0.8))
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                    
+                    Text("Let's remember to take care of our brain's health. A strong mind is key to a healthy life!")
+                       .font(.custom("Noteworthy", size: 20))
+                       .foregroundColor(Color.black)
+                       .multilineTextAlignment(.center)
+                       .fixedSize(horizontal: false, vertical: true)
+                       .padding()
+                       .frame(maxWidth: .infinity)  // Uses available width
+                       .background(Color.white)
+                       .cornerRadius(15)
+                       .padding(.horizontal, 24)
                     Spacer()
+                    
+                    Image("brain_img") // Reference to the SVG
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 200, height: 200)
+                           .opacity(0.8)
                     
                     NavigationLink(destination: SecondScreenView(showSecondScreen: $showSecondScreen)) {
                         Text("Mental Fitness Tracker")

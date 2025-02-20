@@ -29,13 +29,17 @@ struct SummaryView: View {
         ZStack {
             LinearGradient(
                 gradient: Gradient(colors: [
-                    Color(red: 0.9, green: 0.95, blue: 1.0),
-                    Color(red: 0.85, green: 0.95, blue: 0.9)
+                    Color(red: 0.98, green: 0.92, blue: 0.87),    // Soft cream
+                    Color(red: 0.97, green: 0.85, blue: 0.82),    // Delicate pink
+                    Color(red: 0.95, green: 0.80, blue: 0.75),    // Light peach
+                    Color(red: 0.92, green: 0.75, blue: 0.80),    // Muted rose
+                    Color(red: 0.10, green: 0.15, blue: 0.35)     // Dark navy
                 ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
+                startPoint: .top,
+                endPoint: .bottom
             )
             .ignoresSafeArea()
+            
             
             VStack(spacing: 25) {
                 Text("Your Progress Summary")
@@ -65,7 +69,7 @@ struct SummaryView: View {
                 // Feedback message
                 Text(overallCompletion >= 70 ? "Well Done! 🎉" : "You Can Do Better! 💪")
                     .font(.title2)
-                    .foregroundColor(overallCompletion >= 70 ? .green : .orange)
+                    .foregroundColor(overallCompletion >= 70 ? .green : .brown)
                     .padding()
                 
                 // Category breakdown
@@ -93,13 +97,13 @@ struct SummaryView: View {
                     resetAndReturn()
                 }) {
                     Text("Let's Start Again")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(width: 200, height: 50)
-                        .background(
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color.blue)
-                                .shadow(radius: 5)
+                       .font(.headline)
+                       .foregroundColor(.brown)
+                       .frame(width: 200, height: 50)
+                       .background(
+                           RoundedRectangle(cornerRadius: 25)
+                               .fill(Color(red: 0.96, green: 0.87, blue: 0.70))  // Warm beige
+                               .shadow(radius: 5)
                         )
                 }
                 .padding(.top, 30)

@@ -14,27 +14,26 @@ struct SecondScreenView: View {
     var body: some View {
         ZStack {
             LinearGradient(
-                gradient: Gradient(colors: [
-                    Color(red: 0.9, green: 0.95, blue: 1.0),
-                    Color(red: 0.85, green: 0.95, blue: 0.9)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
+               gradient: Gradient(colors: [
+                   Color(red: 0.95, green: 0.90, blue: 1.0),    // Soft lavender
+                   Color(red: 0.90, green: 0.92, blue: 1.0),    // Light periwinkle
+                   Color(red: 0.85, green: 0.90, blue: 0.98)    // Gentle sky blue
+               ]),
+               startPoint: .topLeading,
+               endPoint: .bottomTrailing
             )
             .ignoresSafeArea()
             
             VStack(spacing: 30) {
-                Spacer()
-                Text("Mental Fitness Tracker")
-                    .font(.largeTitle)
-                    .padding(.top, 50)
+               Spacer()
+               Text("Mental Fitness Tracker")
+                   .font(.custom("Noteworthy-Bold", size: 34))
+                   .padding(.top, 50)
                 
-                Text("Pillars of a healthy mind")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color(red: 0.4, green: 0.8, blue: 0.4))
-                    .padding(.top, 10)
-                
+                Text("Pillars of a healthy brain")
+                   .font(.custom("Noteworthy-Bold", size: 24))  // Changed to Noteworthy-Bold
+                   .foregroundColor(Color(red: 0.8, green: 0.2, blue: 0.2))  // Cherry red
+                   .padding(.top, 10)
                 HStack(spacing: 20) {
                                     ForEach([ActivityCategory.physical, .emotional, .cognition]) { category in
                                         NavigationLink {
@@ -43,16 +42,26 @@ struct SecondScreenView: View {
                                             VStack {
                                                 ZStack {
                                                     Circle()
-                                                        .fill(Color(red: 0.8, green: 0.9, blue: 1.0))
-                                                        .frame(width: 100, height: 100)
-                                                    
-                                                    VStack {
-                                                        Text(category.rawValue)
-                                                            .font(.system(size: 14))
-                                                            .fontWeight(.medium)
-                                                        Text("\(Int(viewModel.calculateWeeklyAverage(for: category)))%")
-                                                            .font(.system(size: 20))
-                                                            .fontWeight(.bold)
+                                                        .fill(
+                                                                               LinearGradient(
+                                                                                   gradient: Gradient(colors: [
+                                                                                       Color(red: 0.4, green: 0.2, blue: 0.6),  // Medium purple
+                                                                                       Color(red: 0.3, green: 0.1, blue: 0.5),  // Deeper purple
+                                                                                       Color(red: 0.2, green: 0.0, blue: 0.4)   // Dark purple
+                                                                                   ]),
+                                                                                   startPoint: .topLeading,
+                                                                                   endPoint: .bottomTrailing
+                                                                               )
+                                                                           )
+                                                                           .frame(width: 100, height: 100)
+                                                                   
+                                                                   VStack {
+                                                                       Text(category.rawValue)
+                                                                           .font(.custom("Noteworthy-Bold", size: 14))
+                                                                           .foregroundColor(.white)  // Changed to white for better contrast
+                                                                       Text("\(Int(viewModel.calculateWeeklyAverage(for: category)))%")
+                                                                           .font(.custom("Noteworthy-Bold", size: 20))
+                                                                           .foregroundColor(.white)
                                                     }
                                                 }
                                             }
@@ -71,7 +80,7 @@ struct SecondScreenView: View {
                                        .frame(width: 200, height: 50)
                                        .background(
                                            RoundedRectangle(cornerRadius: 25)
-                                               .fill(Color.green)
+                                               .fill(Color.red)
                                                .shadow(radius: 5)
                                        )
                                }
